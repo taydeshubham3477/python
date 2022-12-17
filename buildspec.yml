@@ -1,0 +1,28 @@
+version: 0.2
+phases:
+  install:
+    runtime-versions:
+      python: 3.9
+    commands:
+         #install python
+         -  apt-get update -y
+         -  apt-get install software-properties-common
+         -  sudo add-apt-repository ppa:deadsnakes/ppa
+         -  apt-get install python3.9 -y
+         -  python3.9 --version
+
+         
+  pre_build:
+    commands:
+      - echo install python dependency issue after installing Python 3.9
+      - apt-get -f install -y
+  build:
+    commands:
+      - echo Build started on `date`
+      
+  post_build:
+   commands:
+     - echo Build completed on `date`
+artifacts:
+  files:
+    - ./**/*
